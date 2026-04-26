@@ -24,7 +24,7 @@
 
 // }
 "use client"
-import {LinkIcon,PlusIcon} from "./Icons"
+import {LinkIcon,PlusIcon} from "./Icons/Icons"
 
 export function LightBtn({onClick}:{onClick:()=>any})
 {

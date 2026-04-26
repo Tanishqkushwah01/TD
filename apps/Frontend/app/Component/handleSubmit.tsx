@@ -25,6 +25,8 @@ export async function handleSubmit({ FormName, userDetails,router }: Props) {
         const data: Signin = userDetails;
         console.log(HTTP_URL);
        const res =  await axios.post(`${HTTP_URL}/signin`, userDetails);
+       console.log("token=>"+res.data.token);
+       localStorage.setItem("token", res.data.token);
        
        if(res.status === 200)
         {

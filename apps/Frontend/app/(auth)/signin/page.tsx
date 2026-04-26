@@ -13,56 +13,56 @@ export default function Signin() {
   const router = useRouter();
 
 
-    return (
-      <div className="auth-page">
-        {/* NAVBAR */}
-        <nav className="nav">
-          <a href="/" className="logo">
-            <span className="logo-icon">T</span>
-            <span className="logo-text">Tanix</span>
-          </a>
-        </nav>
-  
-        <div className="auth-wrapper">
-          {/* Floating doodles */}
-          <div className="doodle doodle-1">
-            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-              <rect x="10" y="10" width="50" height="32" rx="4" fill="white" stroke="#1a1a1a" strokeWidth="2"/>
-              <path d="M60 26 Q80 16 92 26" fill="none" stroke="#e8735a" strokeWidth="2" markerEnd="url(#d1a)"/>
-              <ellipse cx="108" cy="26" rx="28" ry="18" fill="white" stroke="#1a1a1a" strokeWidth="2"/>
-              <defs>
-                <marker id="d1a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                  <path d="M0,0 L0,6 L6,3 z" fill="#e8735a"/>
-                </marker>
-              </defs>
-            </svg>
-          </div>
-          <div className="doodle doodle-2">
-            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-              <polygon points="40,8 72,60 8,60" fill="none" stroke="#1a1a1a" strokeWidth="2" strokeDasharray="4 3"/>
-            </svg>
-          </div>
-          <div className="doodle doodle-3">
-            <div className="sticky-note-sm">just one click ✦</div>
-          </div>
-          <div className="doodle doodle-4">
-            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="30" cy="30" r="24" fill="none" stroke="#e8735a" strokeWidth="2" strokeDasharray="5 3"/>
-            </svg>
-          </div>
-  
-          {/* Card */}
-          <div className="auth-card">
-            <div className="auth-card-header">
-              <div className="auth-logo">
-                <span className="logo-icon">S</span>
-              </div>
-              <h1 className="auth-title">Welcome back</h1>
-              <p className="auth-sub">Sign in to your Tanix account</p>
+  return (
+    <div className="auth-page">
+      {/* NAVBAR */}
+      <nav className="nav">
+        <a href="/" className="logo">
+          <span className="logo-icon">T</span>
+          <span className="logo-text">Tanix</span>
+        </a>
+      </nav>
+
+      <div className="auth-wrapper">
+        {/* Floating doodles */}
+        <div className="doodle doodle-1">
+          <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="10" width="50" height="32" rx="4" fill="white" stroke="#1a1a1a" strokeWidth="2" />
+            <path d="M60 26 Q80 16 92 26" fill="none" stroke="#e8735a" strokeWidth="2" markerEnd="url(#d1a)" />
+            <ellipse cx="108" cy="26" rx="28" ry="18" fill="white" stroke="#1a1a1a" strokeWidth="2" />
+            <defs>
+              <marker id="d1a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L6,3 z" fill="#e8735a" />
+              </marker>
+            </defs>
+          </svg>
+        </div>
+        <div className="doodle doodle-2">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="40,8 72,60 8,60" fill="none" stroke="#1a1a1a" strokeWidth="2" strokeDasharray="4 3" />
+          </svg>
+        </div>
+        <div className="doodle doodle-3">
+          <div className="sticky-note-sm">just one click ✦</div>
+        </div>
+        <div className="doodle doodle-4">
+          <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="24" fill="none" stroke="#e8735a" strokeWidth="2" strokeDasharray="5 3" />
+          </svg>
+        </div>
+
+        {/* Card */}
+        <div className="auth-card">
+          <div className="auth-card-header">
+            <div className="auth-logo">
+              <span className="logo-icon">S</span>
             </div>
-  
-            {/* Social buttons */}
-            {/* <div className="social-btns">
+            <h1 className="auth-title">Welcome back</h1>
+            <p className="auth-sub">Sign in to your Tanix account</p>
+          </div>
+
+          {/* Social buttons */}
+          {/* <div className="social-btns">
               <button className="social-btn">
                 <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -79,61 +79,61 @@ export default function Signin() {
                 Continue with GitHub
               </button>
             </div> */}
-  
-            {/* <div className="divider">
+
+          {/* <div className="divider">
               <span className="divider-line" />
               <span className="divider-text">or sign in with email</span>
               <span className="divider-line" />
             </div> */}
-  
-            {/* Form */}
-            {/* div banaya hai form ko */}
-            <div className="auth-form" >
-              <div className="field">
-                <label className="field-label" htmlFor="email">Email</label>
-                <input
+
+          {/* Form */}
+          {/* div banaya hai form ko */}
+          <div className="auth-form" >
+            <div className="field">
+              <label className="field-label" htmlFor="email">Email</label>
+              <input
                 ref={refEmail}
-                  id="email"
-                  type="email"
-                  className="field-input"
-                  placeholder="you@example.com"
-                  autoComplete="email"
-                />
+                id="email"
+                type="email"
+                className="field-input"
+                placeholder="you@example.com"
+                autoComplete="email"
+              />
+            </div>
+            <div className="field">
+              <div className="field-row">
+                <label className="field-label" htmlFor="password">Password</label>
+                <a href="#" className="forgot-link">Forgot password?</a>
               </div>
-              <div className="field">
-                <div className="field-row">
-                  <label className="field-label" htmlFor="password">Password</label>
-                  <a href="#" className="forgot-link">Forgot password?</a>
-                </div>
-                <input
+              <input
                 ref={refPassword}
-                  id="password"
-                  type="password"
-                  className="field-input"
-                  placeholder="••••••••"
-                  autoComplete="current-password"
-                />
-              </div>
-              <button type="button" onClick={async()=>{
-                console.log("button clicked");
-                const userDetails ={
-                  email:refEmail.current?.value||"",
-                  password:refPassword.current?.value||""
-                }
-             await   handleSubmit({FormName: "signin",userDetails ,router});
-              }} className="submit-btn">Sign in →</button>
+                id="password"
+                type="password"
+                className="field-input"
+                placeholder="••••••••"
+                autoComplete="current-password"
+              />
             </div>
-  
-            {/* Sign up */}
-            <div className="auth-footer">
-              <span>Don&apos;t have an account?</span>
-              <a href="/signup" className="switch-link">Create one — it&apos;s free</a>
-            </div>
+            <button type="button" onClick={async () => {
+              console.log("button clicked");
+              const userDetails = {
+                email: refEmail.current?.value || "",
+                password: refPassword.current?.value || ""
+              }
+              await handleSubmit({ FormName: "signin", userDetails, router });
+            }} className="submit-btn">Sign in →</button>
           </div>
-  
-          {/* Bottom label */}
-          <p className="built-label">Built solo, shipped in public ✦</p>
+
+          {/* Sign up */}
+          <div className="auth-footer">
+            <span>Don&apos;t have an account?</span>
+            <a href="/signup" className="switch-link">Create one — it&apos;s free</a>
+          </div>
         </div>
+
+        {/* Bottom label */}
+        <p className="built-label">Built solo, shipped in public ✦</p>
       </div>
-    );
-  }
+    </div>
+  );
+}

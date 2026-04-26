@@ -1,10 +1,16 @@
 
 "use client"
+import { HTTP_URL } from '@repo/backend-common/config';
+import axios from 'axios';
 import { useState, useRef } from 'react';
+import { useRouter } from "next/navigation";
+
 
 export default function JoinRoom({ onClose }: { onClose: () => void }) {
   const [code, setCode] = useState(['', '', '', '', '', '']);
   const inputs = useRef<(HTMLInputElement | null)[]>([]);
+  const router = useRouter();
+
 
   const handleChange = (index: number, value: string) => {
     if (!/^\d*$/.test(value)) return;
@@ -52,7 +58,21 @@ export default function JoinRoom({ onClose }: { onClose: () => void }) {
       </div>
 
       {/* Button */}
-      <button style={{ width: '100%', background: '#1a1a1a', color: '#fff', border: 'none', borderRadius: '10px', padding: '16px', fontSize: '15px', fontWeight: 500, cursor: 'pointer' }}>
+      <button style={{ width: '100%', background: '#1a1a1a', color: '#fff', border: 'none', borderRadius: '10px', padding: '16px', fontSize: '15px', fontWeight: 500, cursor: 'pointer' }}
+      onClick={async()=>{
+        const result = code.join('');
+          // console.log(result);
+          // console.log( typeof result);
+         const res = await axios.post(`${HTTP_URL}/joinRoom`,{slug:result},{
+          headers:{
+            Authorization:localStorage.getItem("token")
+          }
+         });
+          console.log(res.data.slugId);
+router.push(`/canvas/${res.data.slugId}`)
+
+      }}
+      >
         🔗 Join room
       </button>
 

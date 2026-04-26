@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {CopyIcon,XIcon} from "./Icons"
+import {CopyIcon,XIcon} from "./Icons/Icons"
 
 export interface Room {
   id: string;

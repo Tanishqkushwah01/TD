@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useRouter } from "next/navigation";
 import {HTTP_URL} from "@repo/backend-common/config";
 
 export default function CreateRoom({ onClose }: { onClose: () => void }) {
+  const router = useRouter();
   const [copied, setCopied] = useState(false);
   const [rid, setRid] = useState("");
   const [roomId] = useState(() => 
@@ -56,7 +58,16 @@ export default function CreateRoom({ onClose }: { onClose: () => void }) {
       <button style={{ width: '100%', background: '#1a1a1a', color: '#fff', border: 'none', borderRadius: '10px', padding: '16px', fontSize: '15px', fontWeight: 500, cursor: 'pointer' }}
       onClick={async()=>{
         // alert(roomId);
-        axios.post(`${HTTP_URL}/${roomId}`)
+      const res = await axios.post(`${HTTP_URL}/room`,{
+        name:roomId
+       },{
+        headers:{
+          Authorization: localStorage.getItem("token")
+        }
+       });
+       console.log("droom id = ",res.data.roomId);
+       const slug = res.data.roomId; 
+         router.push(`/canvas/${slug}`);
       }}
       >
         Start drawing →

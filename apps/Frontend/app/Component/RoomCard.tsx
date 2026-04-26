@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-export default function RoomCard({variant}:{variant:string}) {
+export default function RoomCard({variant,date,slug}:{variant:string,date: string | Date,slug:string}) {
   const [hovered, setHovered] = useState(false);
   return (
 
@@ -39,13 +39,13 @@ export default function RoomCard({variant}:{variant:string}) {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '10px' }}>
           <span style={{ fontSize: '12px', color: '#5a2a20' }}>👥 3</span>
-          <span style={{ fontSize: '12px', color: '#5a2a20' }}>🕐 2 hours ago</span>
+          <span style={{ fontSize: '12px', color: '#5a2a20' }}>{timeAgo(date)}</span>
           <button style={{ marginLeft: 'auto', background: 'white', border: '1.5px solid #3a1a14', borderRadius: '8px', padding: '5px 14px', fontSize: '12px', fontWeight: 500, color: '#3a1a14', cursor: 'pointer' }}>
             Open →
           </button>
         </div>
 
-        <span style={{ fontSize: '11px', color: '#7a3a30', fontStyle: 'italic' }}>Room #482910</span>
+        <span style={{ fontSize: '11px', color: '#7a3a30', fontStyle: 'italic' }}>Room #{slug}</span>
 
       </div>
 
@@ -55,3 +55,27 @@ export default function RoomCard({variant}:{variant:string}) {
 }
 
 
+function timeAgo(date: string | Date): string {
+  const now = new Date();
+  const past = new Date(date);
+
+  const seconds = Math.floor((now.getTime() - past.getTime()) / 1000);
+
+  const intervals: { label: string; seconds: number }[] = [
+    { label: "year", seconds: 31536000 },
+    { label: "month", seconds: 2592000 },
+    { label: "day", seconds: 86400 },
+    { label: "hour", seconds: 3600 },
+    { label: "minute", seconds: 60 },
+    { label: "second", seconds: 1 },
+  ];
+
+  for (const i of intervals) {
+    const count = Math.floor(seconds / i.seconds);
+    if (count > 0) {
+      return `${count} ${i.label}${count > 1 ? "s" : ""} ago`;
+    }
+  }
+
+  return "just now";
+}
