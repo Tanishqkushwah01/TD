@@ -119,7 +119,7 @@ import  Link  from "next/link";
               </div>
             </section>
     
-            {/* HOW IT WORKS */}
+            {/* KESE KAAM KARTA HIA */}
             <section className="how" id="how">
               <div className="how-header">
                 <div>
@@ -146,7 +146,7 @@ import  Link  from "next/link";
               </div>
             </section>
     
-            {/* WHAT PEOPLE DRAW */}
+            {/*  WAHT PEOPLE DRAW */}
             <section className="use-cases">
               <p className="eyebrow">— what people draw</p>
               <h2 className="section-title">One board, every kind of thinking.</h2>

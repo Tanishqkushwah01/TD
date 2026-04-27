@@ -1,149 +1,75 @@
-"use client"
+"use client";
+
 import { useState } from "react";
-import { Arrow, Circle, Cursor, Diamond, Eraser, HandTool, Line, LockIcon, Pencil, Rect, Text } from "./Icons/ToolIcons";
+import {
+  Arrow, Circle, Cursor, Diamond, Eraser,
+  HandTool, Line, LockIcon, Pencil, Rect, Text
+} from "./Icons/ToolIcons";
+// import { tools } from "./Canvas";
 
-export default function Tools() {
-
-    return <div
-        style={{
-            position: "fixed",
-            top: "20px",
-            left: "50%",
-            transform: "translateX(-50%)",
-            zIndex: 1000,
-            background: "white",
-            padding: "10px 20px",
-            borderRadius: "12px",
-            boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-            display: "flex",
-            gap: "10px",
-            alignItems: "center",
-            color: "black",
-            cursor: "pointer",
-            width: "490px",
-            height: "40px",
-        }}
+export default function Tools( {
+    activeTool,
+    setActiveTool,
+  }: {
+    activeTool: number;
+    setActiveTool: (tool: number) => void;
+  }) {
+  const [hovered, setHovered] = useState<number | null>(null);
+   const tools = [
+              LockIcon,
+              HandTool,
+              Cursor,
+            Rect,
+             Diamond,
+              Circle,
+              Arrow,
+              Line,
+             Pencil,
+              Text,
+             Eraser
+          ];
+  return (
+    <div
+      style={{
+        position: "fixed",
+        top: "20px",
+        left: "50%",
+        transform: "translateX(-50%)",
+        zIndex: 1000,
+        background: "white",
+        padding: "10px 20px",
+        borderRadius: "12px",
+        boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+        display: "flex",
+        gap: "10px",
+        alignItems: "center",
+        width: "490px",
+        height: "40px",
+      }}
     >
+      {tools.map((Icon, i) => (
         <button
-            style={{
-                background: "white",
-                border: "none",
-                padding: "6px",
-                borderRadius: "6px",
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "purple"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "white"}
-        >  <LockIcon /> </button>
-
-        <button
-            style={{
-                background: "white",
-                border: "none",
-                padding: "6px",
-                borderRadius: "6px",
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "purple"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "white"}
-        > <HandTool /> </button>
-
-        <button
-            style={{
-                background: "white",
-                border: "none",
-                padding: "6px",
-                borderRadius: "6px",
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "purple"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "white"}
-        > <Cursor /> </button>
-
-        <button
-            style={{
-                background: "white",
-                border: "none",
-                padding: "6px",
-                borderRadius: "6px",
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "purple"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "white"}
-        > <Rect /> </button>
-
-        <button
-            style={{
-                background: "white",
-                border: "none",
-                padding: "6px",
-                borderRadius: "6px",
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "purple"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "white"}
-        >  <Diamond /> </button>
-
-        <button
-            style={{
-                background: "white",
-                border: "none",
-                padding: "6px",
-                borderRadius: "6px",
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "purple"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "white"}
-        >  <Circle /> </button>
-
-        <button
-            style={{
-                background: "white",
-                border: "none",
-                padding: "6px",
-                borderRadius: "6px",
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "purple"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "white"}
-        >  <Arrow /> </button>
-
-        <button
-            style={{
-                background: "white",
-                border: "none",
-                padding: "6px",
-                borderRadius: "6px",
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "purple"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "white"}
-        >  <Line /> </button>
-
-        <button
-            style={{
-                background: "white",
-                border: "none",
-                padding: "6px",
-                borderRadius: "6px",
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "purple"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "white"}
-        > <Pencil /> </button>
-
-        <button
-            style={{
-                background: "white",
-                border: "none",
-                padding: "6px",
-                borderRadius: "6px",
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "purple"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "white"}
-        >  <Text /> </button>
-
-        <button
-            style={{
-                background: "white",
-                border: "none",
-                padding: "6px",
-                borderRadius: "6px",
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "purple"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "white"}
-        > <Eraser /> </button>
-
+          key={i}
+          onClick={() => setActiveTool(i)}
+          onMouseEnter={() => setHovered(i)}
+          onMouseLeave={() => setHovered(null)}
+          style={{
+            background:
+              activeTool === i
+                ? "purple"
+                : hovered === i
+                ? "lightgray"
+                : "white",
+            border: "none",
+            padding: "6px",
+            borderRadius: "6px",
+            cursor: "pointer",
+            transition: "0.2s",
+          }}
+        >
+          <Icon />
+        </button>
+      ))}
     </div>
+  );
 }

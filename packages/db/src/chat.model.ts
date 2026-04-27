@@ -7,7 +7,11 @@ const ChatSchema = new mongoose.Schema(
             required: true,
         },
         roomId: {
-            type: String,
+            type: Number,
+            required: true,
+            trim: true
+        },userId:{
+            type: mongoose.Types.ObjectId,
             required: true,
             trim: true
         },

@@ -1,10 +1,10 @@
-import { useEffect, useRef } from "react";
 import Tools from "../../Component/Tools";
+import RoomCanvas from "../../Component/RoomCanvas";
 
-export default function Canvas() {
+export default async function Canvas({ params }: { params: { roomId: string } }) {
+    const roomId = (await params).roomId;
+
+    return <RoomCanvas roomId={roomId} />
+
    
-    return <div className="bg-black h-screen w-screen text-white overflow-hidden">
-
-        <Tools />
-    </div>
 }
